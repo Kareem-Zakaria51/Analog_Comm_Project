@@ -44,20 +44,6 @@ f = (-N/2 : N/2-1) * (Fs_new / N);  % frequency vector
 spect1 = fftshift(fft(sig1_sampled));
 spect2 = fftshift(fft(sig2_sampled));
 
-figure;
-plot(f, abs(spect1));
-title("Spectrum of (FM9090) - After Sampling");
-xlabel("Frequency (Hz)");
-ylabel("Magnitude");
-grid on;
-
-figure;
-plot(f, abs(spect2));
-title("Spectrum of (Quran Palestine) - After Sampling");
-xlabel("Frequency (Hz)");
-ylabel("Magnitude");
-grid on;
-
 
 % ===========================
 % AM Modulation using DSB-SC
@@ -69,35 +55,3 @@ sig1_mod = sig1_sampled .* carrier1';
 sig2_mod = sig2_sampled .* carrier2';
 
 sig_FDM = sig1_mod + sig2_mod;
-
-
-% ===========================
-% Plot Modulated & FDM Signals
-% ===========================
-spect1_mod = fftshift(fft(sig1_mod));
-spect2_mod = fftshift(fft(sig2_mod));
-spect_FDM  = fftshift(fft(sig_FDM));
-
-% 1st Modulated Signal
-figure;
-plot(f, abs(spect1_mod));
-title("Spectrum of Modulated Signal 1 (FC1 = 100 kHz)");
-xlabel('Frequency (Hz)');
-ylabel('Magnitude');
-grid on;
-
-% 2nd Modulated Signal
-figure;
-plot(f, abs(spect2_mod));
-title("Spectrum of Modulated Signal 2 (FC1 = 130 kHz)");
-xlabel('Frequency (Hz)');
-ylabel('Magnitude');
-grid on;
-
-% FDM Signals
-figure;
-plot(f, abs(spect_FDM));
-title("Spectrum of FDM Signal");
-xlabel('Frequency (Hz)');
-ylabel('Magnitude');
-grid on;
