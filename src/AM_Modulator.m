@@ -37,7 +37,7 @@ Ts_new = 1 / Fs_new;
 % ===========================
 % Plot Upsampled Signals
 % ===========================
-N = length(sig1_mono_upsampled);
+N = length(sig1_sampled);
 t = (0 : N-1) * Ts_new;             % time vector
 f = (-N/2 : N/2-1) * (Fs_new / N);  % frequency vector
 
