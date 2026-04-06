@@ -3,13 +3,14 @@
 % ===========================
 spect1_mod = fftshift(fft(sig1_mod));
 spect2_mod = fftshift(fft(sig2_mod));
+spect3_mod = fftshift(fft(sig3_mod));
+spect4_mod = fftshift(fft(sig4_mod));
+spect5_mod = fftshift(fft(sig5_mod));
 spect_FDM  = fftshift(fft(sig_FDM));
 
 figure;
-tiledlayout(2, 2);
-
 % 1st Modulated Signal
-nexttile();
+subplot(2, 2, 1);
 plot(f, abs(spect1_mod));
 title("Spectrum of Modulated Signal 1 (FC1 = 100 kHz)");
 xlabel('Frequency (Hz)');
@@ -17,17 +18,42 @@ ylabel('Magnitude');
 grid on;
 
 % 2nd Modulated Signal
-nexttile();
+subplot(2, 2, 2);
 plot(f, abs(spect2_mod));
-title("Spectrum of Modulated Signal 2 (FC1 = 130 kHz)");
+title("Spectrum of Modulated Signal 2 (FC2 = 130 kHz)");
 xlabel('Frequency (Hz)');
 ylabel('Magnitude');
 grid on;
 
-% FDM Signals
-nexttile([1 2]);
+% 3rd Modulated Signals
+subplot(2, 2, 3);
+plot(f, abs(spect3_mod));
+title("Spectrum of Modulated Signal 3 (FC3 = 160 kHz)");
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+grid on;
+
+% 4th Modulated Signal
+subplot(2, 2, 4);
+plot(f, abs(spect4_mod));
+title("Spectrum of Modulated Signal 4 (FC4 = 190 kHz)");
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+grid on;
+
+figure;
+% 5th Modulated Signal
+subplot(2, 1, 1);
+plot(f, abs(spect5_mod));
+title("Spectrum of Modulated Signal 5 (FC5 = 220 kHz)");
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+grid on;
+
+% FDM Signal
+subplot(2, 1, 2);
 plot(f, abs(spect_FDM));
-title("Spectrum of FDM Signal");
+title("*Spectrum of FDM Signal");
 xlabel('Frequency (Hz)');
 ylabel('Magnitude');
 grid on;

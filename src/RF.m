@@ -1,8 +1,8 @@
 % =============================
 % RF Stage - BPF
 % =============================
-BW = 15e3;          % estimated from signal plot
-n = 0;              % signal index [0, 1 == sig1, sig2]
+BW = 20e3;          % estimated from signal plot
+n = 0;              % signal index [0, 1, 2, 3, 4 == sig1, sig2, sig3, sig4, sig5]
 deltaFC = 30e3;     % each signal carrier differ by 30 kHz
 
 % BPF for signal 1+n - centered at FC1 + 30*n kHz
@@ -12,3 +12,4 @@ BPF = fir1(200, [BPF_low, BPF_upp], 'bandpass');    % FIR BPF
 
 % Pass FDM signal to RF BPF
 RF_out = filter(BPF, 1,sig_FDM);
+% RF_out = sig_FDM;   % Remove RF BPF

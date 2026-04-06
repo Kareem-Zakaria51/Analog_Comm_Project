@@ -9,4 +9,5 @@ LPF = fir1(200, fc / (Fs_new/2));    % FIR LPF
 
 sig_BB_filtered = filter(LPF, 1, sig_BB);
 
-sound(sig_BB_filtered, Fs1);
+sig_out = resample(sig_BB_filtered,Fs1,Fs_new);
+sound(sig_out, Fs1);
