@@ -1,0 +1,104 @@
+% ===========================
+% Plot Modulated & FDM Signals
+% ===========================
+spect1_mod = fftshift(fft(sig1_mod));
+spect2_mod = fftshift(fft(sig2_mod));
+spect_FDM  = fftshift(fft(sig_FDM));
+
+figure;
+tiledlayout(2, 2);
+
+% 1st Modulated Signal
+nexttile();
+plot(f, abs(spect1_mod));
+title("Spectrum of Modulated Signal 1 (FC1 = 100 kHz)");
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+grid on;
+
+% 2nd Modulated Signal
+nexttile();
+plot(f, abs(spect2_mod));
+title("Spectrum of Modulated Signal 2 (FC1 = 130 kHz)");
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+grid on;
+
+% FDM Signals
+nexttile([1 2]);
+plot(f, abs(spect_FDM));
+title("Spectrum of FDM Signal");
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+grid on;
+
+
+% ===========================
+% Plot FDM Signals & RF Output
+% ===========================
+spect_RF = fftshift(fft(RF_out));
+
+figure;
+% FDM Signal
+subplot(2, 1, 1);
+plot(f, abs(spect_FDM));
+title("Spectrum of FDM Signal");
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+grid on;
+
+% RF Output
+subplot(2, 1, 2);
+plot(f, abs(spect_RF));
+title('RF Stage Output');
+xlabel('Frequency (Hz)');
+ylabel('Amplitude');
+grid on;
+
+
+% ===========================
+% Plot IF (Input & Output)
+% ===========================
+spect_IF_in = fftshift(fft(IF_in));
+spect_IF = fftshift(fft(IF_out));
+
+figure;
+% IF Input - Mixer Output
+subplot(2, 1, 1);
+plot(f, abs(spect_IF_in));
+title('Down Converted Singal - Centered at IF = 15 kHz');
+xlabel('Frequency (Hz)');
+ylabel('Amplitude');
+grid on;
+
+% IF Output
+subplot(2, 1, 2);
+plot(f, abs(spect_IF));
+title('IF Stage Output');
+xlabel('Frequency (Hz)');
+ylabel('Amplitude');
+grid on;
+
+
+% ===========================
+% Base Band Signal (Before & After) LPF
+% ===========================
+spect_BB = fftshift(fft(sig_BB));
+spect_BB_filtered = fftshift(fft(sig_BB_filtered));
+
+figure;
+% Base Band Signal Before LPF
+subplot(2, 1, 1);
+plot(f, abs(spect_BB));
+title('Base Band Signal - Before LPF');
+xlabel('Frequency (Hz)');
+ylabel('Amplitude');
+grid on;
+
+% Base Band Signal After LPF
+subplot(2, 1, 2);
+plot(f, abs(spect_BB_filtered));
+title('Base Band Signal - After LPF');
+xlabel('Frequency (Hz)');
+ylabel('Amplitude');
+grid on;
